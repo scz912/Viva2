@@ -1,289 +1,936 @@
 # 🎬 EntertainMe
 
-EntertainMe is a web-based entertainment recommendation system that helps users discover movies, books, and music based on trends, ratings, and personal preferences.
+EntertainMe is a web-based entertainment recommendation system that allows users to explore movies, books, and music. Users can register, login, search entertainment items, save items into watchlist, manage profile, and submit ratings and reviews.
 
 ---
 
-## 📌 Project Description
+## 📌 Project Objective
 
-EntertainMe provides a centralized platform where users can:
-- Search and explore entertainment content
-- Get recommendations
-- Save favourites into watchlist
-- Write and view reviews
+The objective of this project is to create a web application that helps users discover entertainment content such as movies, books, and music. The system also allows users to save favourite items, manage their profile, and share reviews.
 
 ---
 
-## 🎯 Project Objective
-
-The objective of this project is to:
-- Help users discover new entertainment content
-- Provide personalized recommendations
-- Allow users to manage their watchlist
-- Enable user interaction through ratings and reviews
-- Build a full-stack web application using modern technologies
-
----
-
-## 👨‍💻 Tech Stack
+## 🛠️ Technologies Used
 
 ### Frontend
 - HTML5
-- CSS3 (Bootstrap 5)
-- JavaScript (Vanilla JS)
+- CSS3
+- Bootstrap 5
+- JavaScript
 
 ### Backend
 - Node.js
 - Express.js
 - MongoDB Atlas
 - Mongoose
+- JWT Authentication
+- bcryptjs
 
 ---
 
 ## 📁 Project Structure
 
-
-entertainme/
+```txt
+ENTERTAINME/
+│
+├── .vscode/
 │
 ├── css/
-├── img/
-├── js/
-│ ├── api.js
-│ ├── auth.js
-│ ├── search.js
-│ ├── review.js
-│ ├── watchlist.js
-│ ├── profile.js
+│   └── style.css
 │
 ├── entertainme-backend/
-│ ├── models/
-│ ├── routes/
-│ ├── middleware/
-│ ├── server.js
-│ ├── .env
+│   │
+│   ├── middleware/
+│   │   └── authMiddleware.js
+│   │
+│   ├── models/
+│   │   ├── Item.js
+│   │   ├── Review.js
+│   │   ├── User.js
+│   │   └── Watchlist.js
+│   │
+│   ├── node_modules/
+│   │
+│   ├── routes/
+│   │   ├── authRoutes.js
+│   │   ├── itemRoutes.js
+│   │   ├── reviewRoutes.js
+│   │   ├── userRoutes.js
+│   │   └── WatchlistRoutes.js
+│   │
+│   ├── .env
+│   ├── package-lock.json
+│   ├── package.json
+│   └── server.js
 │
-├── *.html
-└── README.md
-
-
----
-
-## ⚙️ System Modules
-
-### 1. Authentication
-- Register
-- Login
-- Logout
-- Session management
-
-### 2. Profile Management
-- View profile
-- Update profile
-- Change password
-- Delete account
-
-### 3. Recommendation / Dashboard
-- Show trending content
-- Suggest content
-
-### 4. Search & Filter
-- Search by title / keyword
-- Filter by:
-  - Type
-  - Genre
-  - Year
-  - Rating
-
-### 5. Watchlist
-- Add to watchlist
-- Remove from watchlist
-- View saved items
-
-### 6. Rating & Review
-- Add rating
-- Write review
-- View reviews
+├── img/
+│   └── homebannerbg.jpg
+│
+├── js/
+│   ├── api.js
+│   ├── auth.js
+│   ├── main.js
+│   ├── profile.js
+│   ├── review.js
+│   ├── search.js
+│   └── watchlist.js
+│
+├── changePassword.html
+├── editProfile.html
+├── emailVerification.html
+├── home.html
+├── login.html
+├── otp.html
+├── profile.html
+├── review.html
+├── search.html
+├── signup.html
+└── watchlist.html
+```
 
 ---
 
-## 🚀 Backend API
+## 📂 File Functions
 
-### Auth
-- POST `/api/auth/register`
-- POST `/api/auth/login`
+### Frontend Files
 
-### Users
-- GET `/api/users/profile`
-- PUT `/api/users/profile`
-- PUT `/api/users/change-password`
-- DELETE `/api/users/profile`
-
-### Items
-- GET `/api/items`
-- GET `/api/items/:id`
-
-### Reviews
-- POST `/api/reviews`
-- GET `/api/reviews/item/:itemId`
-- GET `/api/reviews/my-reviews`
-
-### Watchlist
-- POST `/api/watchlist`
-- GET `/api/watchlist`
-- DELETE `/api/watchlist/:itemId`
+| File | Function |
+|---|---|
+| `login.html` | Login page interface |
+| `signup.html` | User registration page interface |
+| `home.html` | Homepage / dashboard showing trending and top chart entertainment |
+| `search.html` | Search and filter page for movies, music, and books |
+| `watchlist.html` | Displays user saved entertainment items |
+| `profile.html` | Displays user profile and profile management options |
+| `editProfile.html` | Allows user to edit profile information |
+| `changePassword.html` | Allows user to update password |
+| `emailVerification.html` | Email verification page for password reset |
+| `otp.html` | OTP verification page |
+| `review.html` | Displays item details and allows user to submit reviews |
+| `css/style.css` | Main styling file for all pages |
+| `img/homebannerbg.jpg` | Homepage banner background image |
 
 ---
 
-## 🔧 Installation
+### Frontend JavaScript Files
 
-### 1. Clone project
-
-git clone <your-repo-link>
-cd entertainme
-
+| File | Function |
+|---|---|
+| `js/api.js` | Stores API base URL and authentication header function |
+| `js/auth.js` | Handles login, register, and logout API logic |
+| `js/main.js` | Handles homepage logic and common UI functions |
+| `js/search.js` | Fetches entertainment items from API and handles search/filter |
+| `js/review.js` | Handles review page, rating input, and review API integration |
+| `js/watchlist.js` | Handles add, remove, and display watchlist using API |
+| `js/profile.js` | Handles profile API integration such as view profile and update profile |
 
 ---
 
-### 2. Backend setup
+### Backend Files
 
+| File | Function |
+|---|---|
+| `server.js` | Main backend server file |
+| `.env` | Stores secret configuration such as MongoDB URL and JWT secret |
+| `package.json` | Stores backend dependencies and scripts |
+| `middleware/authMiddleware.js` | Verifies JWT token for protected routes |
+| `models/User.js` | User database schema |
+| `models/Item.js` | Entertainment item database schema |
+| `models/Review.js` | Review database schema |
+| `models/Watchlist.js` | Watchlist database schema |
+| `routes/authRoutes.js` | Register and login API routes |
+| `routes/userRoutes.js` | Profile, update profile, change password, delete account routes |
+| `routes/itemRoutes.js` | Entertainment item API routes |
+| `routes/reviewRoutes.js` | Review and rating API routes |
+| `routes/WatchlistRoutes.js` | Watchlist API routes |
+
+---
+
+## ⚙️ Backend Setup
+
+### 1. Go to backend folder
+
+```bash
 cd entertainme-backend
+```
+
+### 2. Install dependencies
+
+```bash
 npm install
+```
 
+### 3. Create `.env` file
 
----
-
-### 3. Create `.env`
-
-MONGO_URI=your_mongodb_connection
-JWT_SECRET=your_secret_key
+```env
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret_key
 PORT=5000
+```
 
+### 4. Run backend server
 
----
-
-### 4. Run backend
-
+```bash
 npm run dev
+```
 
+Expected output:
 
-Backend URL:
-
-http://localhost:5000
-
+```txt
+Server running on port 5000
+MongoDB connected
+```
 
 ---
 
-### 5. Run frontend
-Open:
+## 🗄️ MongoDB Atlas Setup
 
+Team members need to login to MongoDB Atlas to view database data.
+
+### Steps
+
+1. Go to MongoDB Atlas:
+
+```txt
+https://cloud.mongodb.com/
+```
+
+2. I will send invitation to each team member for you all to access the database.
+
+3. Open the project cluster.
+
+4. Go to:
+
+```txt
+Database → Browse Collections
+```
+
+5. Main collections:
+
+```txt
+users
+items
+reviews
+watchlists
+```
+
+### MongoDB Rules
+
+- Do not delete collections.
+- Do not randomly edit database data.
+- Use Postman or frontend API for testing.
+- Ask the leader before changing database structure.
+
+---
+
+## 🌐 Frontend Setup
+
+Open frontend using **Live Server** in VS Code. (You all maybe can download extension of Live Server)
+
+Recommended starting page:
+
+```txt
 login.html
+```
 
+Frontend URL example:
+
+```txt
+http://127.0.0.1:5500/login.html
+```
+
+Backend API URL:
+
+```txt
+http://localhost:5000/api
+```
 
 ---
 
-## 🔗 Frontend API Integration Guide
+## 🔗 API Base Setup
 
-### API Base
+File: `js/api.js`
+
 ```js
 const API_BASE_URL = "http://localhost:5000/api";
-Auth Header
+
+function getToken() {
+  return localStorage.getItem("token");
+}
+
 function authHeaders() {
   return {
     "Content-Type": "application/json",
-    "Authorization": `Bearer ${localStorage.getItem("token")}`
+    "Authorization": `Bearer ${getToken()}`
   };
 }
-🔐 Login Example
-fetch(`${API_BASE_URL}/auth/login`, {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({ email, password })
-});
-🔍 Get Items
-fetch(`${API_BASE_URL}/items`);
-⭐ Add Review
-fetch(`${API_BASE_URL}/reviews`, {
-  method: "POST",
-  headers: authHeaders(),
-  body: JSON.stringify({
-    itemId,
-    rating,
-    comment
-  })
-});
-📌 Watchlist
-Add
-fetch(`${API_BASE_URL}/watchlist`, {
-  method: "POST",
-  headers: authHeaders(),
-  body: JSON.stringify({ itemId })
-});
-Remove
-fetch(`${API_BASE_URL}/watchlist/${itemId}`, {
-  method: "DELETE",
-  headers: authHeaders()
-});
-Get
-fetch(`${API_BASE_URL}/watchlist`, {
-  headers: authHeaders()
-});
-⚠️ Important Rules
-❗ Do NOT use mock data anymore
-❗ Always call backend API
-❗ Use _id from MongoDB
-❗ Include token for protected routes
-❗ Test API using Postman first
-👥 Team Members
-Name	Role
-Soh Chang Zheng (Leader)	Backend + Search
-Tiew Yi Xu	Dashboard
-Tay Yi Lin	Review
-Kwong Jia Yee	Watchlist
-Boo Ee Vone	Authentication
-See Chan Sing	Profile
-📌 Current Status
-✅ Frontend UI completed
-✅ Backend API almost completed
-🔄 API integration ongoing
-🎯 What You Need To Do
-
-Each member must:
-
-Replace mock data with API
-Connect frontend with backend
-Use fetch() to call API
-Test using Postman first
-Ensure dynamic data from database
-🐞 Common Errors
-Error	Cause
-401 Unauthorized	Token missing
-404 Not Found	Wrong endpoint
-500 Server Error	Backend issue
-Buffer timeout	MongoDB connection
-🚀 Final Goal
-Full-stack working system
-Real data from MongoDB
-No static/mock data
-Fully integrated frontend + backend
-📌 Author
-
-Soh Chang Zheng
-Team Leader – EntertainMe
-
-✨ Good luck team!
-
+```
 
 ---
 
-## ✅ You can now:
-- Copy ALL in one go ✔
-- Paste into `README.md` ✔
-- Push to GitHub ✔
+## 🔐 Authentication API
+
+### Register 
+
+```http
+POST /api/auth/register
+```
+
+Request body:
+
+```json
+{
+  "name": "Soh Chang Zheng",
+  "email": "example@gmail.com",
+  "password": "12345678"
+}
+```
 
 ---
 
-If you want next:
-👉 I can help you **write instructions for each teammate (separate tasks)**  
-👉 Or help you **prepare demo presentation script**
+### Login
 
-Just tell me 👍
+```http
+POST /api/auth/login
+```
+
+Request body:
+
+```json
+{
+  "email": "example@gmail.com",
+  "password": "12345678"
+}
+```
+
+After login, save token:
+
+```js
+localStorage.setItem("token", data.token);
+localStorage.setItem("user", JSON.stringify(data.user));
+```
+
+---
+
+### Logout
+
+```js
+function logout() {
+  localStorage.removeItem("token");
+  localStorage.removeItem("user");
+  window.location.href = "login.html";
+}
+```
+
+---
+
+## 👤 User Profile API
+
+### View Profile
+
+```http
+GET /api/users/profile
+```
+
+Headers:
+
+```txt
+Authorization: Bearer token_here
+```
+
+---
+
+### Update Profile
+
+```http
+PUT /api/users/profile
+```
+
+Request body:
+
+```json
+{
+  "name": "New Name",
+  "email": "newemail@gmail.com"
+}
+```
+
+---
+
+### Change Password
+
+```http
+PUT /api/users/change-password
+```
+
+Request body:
+
+```json
+{
+  "oldPassword": "12345678",
+  "newPassword": "newpassword123"
+}
+```
+
+---
+
+### Delete Account
+
+```http
+DELETE /api/users/profile
+```
+
+---
+
+## 🎞️ Items API
+
+### Get All Items
+
+```http
+GET /api/items
+```
+
+Used by:
+- `home.html`
+- `search.html`
+- `review.html`
+
+---
+
+### Get Single Item
+
+```http
+GET /api/items/:id
+```
+
+Example:
+
+```txt
+http://localhost:5000/api/items/ITEM_ID_HERE
+```
+
+---
+
+## 🔍 Search API Integration
+
+Frontend should call:
+
+```js
+const res = await fetch(`${API_BASE_URL}/items`);
+const data = await res.json();
+```
+
+Then filtering can be done in frontend JavaScript using:
+- title
+- type
+- genre
+- year
+- rating
+
+---
+
+## ⭐ Review API
+
+### Add Review
+
+```http
+POST /api/reviews
+```
+
+Headers:
+
+```txt
+Authorization: Bearer token_here
+Content-Type: application/json
+```
+
+Request body:
+
+```json
+{
+  "itemId": "ITEM_ID_HERE",
+  "rating": 5,
+  "comment": "Very good movie!"
+}
+```
+
+---
+
+### Get Reviews by Item
+
+```http
+GET /api/reviews/item/:itemId
+```
+
+---
+
+### Get My Reviews
+
+```http
+GET /api/reviews/my-reviews
+```
+
+Headers:
+
+```txt
+Authorization: Bearer token_here
+```
+
+---
+
+## 📌 Watchlist API
+
+### Add to Watchlist
+
+```http
+POST /api/watchlist
+```
+
+Request body:
+
+```json
+{
+  "itemId": "ITEM_ID_HERE"
+}
+```
+
+---
+
+### View My Watchlist
+
+```http
+GET /api/watchlist
+```
+
+---
+
+### Remove from Watchlist
+
+```http
+DELETE /api/watchlist/:itemId
+```
+
+---
+
+## 🔗 Frontend API Integration Examples
+
+This section shows how to connect frontend (HTML + JS) with backend API.
+
+---
+
+### 🔐 1. Login Integration (auth.js) (I have done this login API integration)
+
+```js
+async function login() {
+  const email = document.getElementById("emailInput").value;
+  const password = document.getElementById("passwordInput").value;
+
+  const res = await fetch(`${API_BASE_URL}/auth/login`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ email, password })
+  });
+
+  const data = await res.json();
+
+  if (!res.ok) {
+    alert(data.message);
+    return;
+  }
+
+  // Save token
+  localStorage.setItem("token", data.token);
+  localStorage.setItem("user", JSON.stringify(data.user));
+
+  window.location.href = "home.html";
+}
+```
+
+---
+
+### 👤 2. Get Profile (profile.js)
+
+```js
+async function loadProfile() {
+  const res = await fetch(`${API_BASE_URL}/users/profile`, {
+    headers: authHeaders()
+  });
+
+  const user = await res.json();
+
+  document.getElementById("name").innerText = user.name;
+  document.getElementById("email").innerText = user.email;
+}
+```
+
+---
+
+### 🎞️ 3. Load Items (search.js / home.js)
+
+```js
+async function loadItems() {
+  const res = await fetch(`${API_BASE_URL}/items`);
+  const items = await res.json();
+
+  renderItems(items);
+}
+```
+
+---
+
+### 🔍 4. Search + Filter (Frontend)
+
+```js
+function applyFilters(items) {
+  return items.filter(item => {
+    return (
+      (filters.search === "" || item.title.toLowerCase().includes(filters.search)) &&
+      (filters.type === "all" || item.type === filters.type) &&
+      (filters.genre === "all" || item.genre === filters.genre) &&
+      (filters.year === "all" || item.year == filters.year) &&
+      (filters.rating === "all" || item.rating >= filters.rating)
+    );
+  });
+}
+```
+
+---
+
+### ⭐ 5. Add Review (review.js)
+
+```js
+async function submitReview(itemId) {
+  const rating = document.getElementById("rating").value;
+  const comment = document.getElementById("comment").value;
+
+  const res = await fetch(`${API_BASE_URL}/reviews`, {
+    method: "POST",
+    headers: authHeaders(),
+    body: JSON.stringify({ itemId, rating, comment })
+  });
+
+  const data = await res.json();
+
+  if (!res.ok) {
+    alert(data.message);
+    return;
+  }
+
+  alert("Review added!");
+}
+```
+
+---
+
+### 📖 6. Get Reviews (review.js)
+
+```js
+async function loadReviews(itemId) {
+  const res = await fetch(`${API_BASE_URL}/reviews/item/${itemId}`);
+  const reviews = await res.json();
+
+  console.log(reviews);
+}
+```
+
+---
+
+### 📌 7. Add to Watchlist (watchlist.js)
+
+```js
+async function addToWatchlist(itemId) {
+  const res = await fetch(`${API_BASE_URL}/watchlist`, {
+    method: "POST",
+    headers: authHeaders(),
+    body: JSON.stringify({ itemId })
+  });
+
+  const data = await res.json();
+
+  if (!res.ok) {
+    alert(data.message);
+    return;
+  }
+
+  alert("Added to watchlist");
+}
+```
+
+---
+
+### 📌 8. Get Watchlist
+
+```js
+async function loadWatchlist() {
+  const res = await fetch(`${API_BASE_URL}/watchlist`, {
+    headers: authHeaders()
+  });
+
+  const data = await res.json();
+
+  const items = data.map(w => w.itemId);
+
+  renderItems(items);
+}
+```
+
+---
+
+### ❌ 9. Remove from Watchlist
+
+```js
+async function removeFromWatchlist(itemId) {
+  const res = await fetch(`${API_BASE_URL}/watchlist/${itemId}`, {
+    method: "DELETE",
+    headers: authHeaders()
+  });
+
+  const data = await res.json();
+
+  alert(data.message);
+}
+```
+
+---
+
+### 🔓 10. Logout
+
+```js
+function logout() {
+  localStorage.removeItem("token");
+  localStorage.removeItem("user");
+  window.location.href = "login.html";
+}
+```
+
+---
+
+## ⚠️ Important Notes for Frontend Integration
+
+### 📌 1. Script Loading Order (VERY IMPORTANT)
+
+Always include `api.js` **BEFORE** any other JavaScript file.
+
+✅ Correct:
+```html
+<script src="js/api.js"></script>
+<script src="js/search.js"></script>
+```
+
+❌ Wrong:
+```html
+<script src="js/search.js"></script>
+<script src="js/api.js"></script>
+```
+
+### ❗ Why?
+
+Because `api.js` contains:
+```js
+const API_BASE_URL = "http://localhost:5000/api";
+```
+
+If you load other JS files first, you will get error:
+```
+API_BASE_URL is not defined
+```
+
+---
+
+### 📌 2. Always Use Token for Protected Routes
+
+Use this helper:
+```js
+authHeaders()
+```
+
+Example:
+```js
+fetch(`${API_BASE_URL}/users/profile`, {
+  headers: authHeaders()
+});
+```
+
+---
+
+### 📌 3. Always Use MongoDB `_id`
+
+Backend uses MongoDB ObjectId.
+
+✅ Correct:
+```js
+item._id
+```
+
+❌ Wrong:
+```js
+item.id
+```
+
+---
+
+### 📌 4. Remove All Mock Data
+
+❌ Do NOT use:
+```js
+const mockData = [...]
+```
+
+✅ Replace with:
+```js
+fetch(`${API_BASE_URL}/items`)
+```
+
+---
+
+### 📌 5. Backend Must Be Running
+
+Before testing frontend:
+
+```bash
+cd entertainme-backend
+npm run dev
+```
+
+Then open frontend HTML normally.
+
+---
+
+### 📌 6. Login First Before Testing
+
+Some APIs require token:
+- Profile
+- Watchlist
+- Add Review
+
+So:
+1. Login
+2. Save token
+3. Then test features
+
+---
+
+## 🧪 Example Full Flow
+
+```txt
+1. User login → get token
+2. Save token in localStorage
+3. Use token for all API requests
+4. Load items from /api/items
+5. Add to watchlist via API
+6. Submit review via API
+7. Fetch watchlist & reviews dynamically
+```
+
+---
+
+## 🚀 Final Reminder
+
+👉 Remove ALL mock data from frontend  
+👉 Replace everything with API calls  
+
+---
+
+## 👥 Team Members and Responsibilities
+
+| Name | Responsibility |
+|---|---|
+| Soh Chang Zheng | Team Leader, Backend, Search and Filter Module |
+| Tiew Yi Xu | Dashboard and Recommendation Module |
+| Tay Yi Lin | Rating and Review Module |
+| Kwong Jia Yee | Watchlist Module |
+| Boo Ee Vone | Authentication Module |
+| See Chan Sing | Profile Management Module |
+
+---
+
+## ✅ Current Progress
+
+| Part | Status |
+|---|---|
+| Frontend UI | Completed |
+| Backend API | Almost completed |
+| MongoDB Connection | Completed |
+| API Integration | In progress |
+| Final Testing | Pending |
+
+---
+
+## 📌 Important Instructions for Team Members
+
+Each member should:
+
+1. Pull the latest GitHub code.
+2. Run backend using `npm run dev`.
+3. Open frontend using Live Server.
+4. Replace mock data with API calls.
+5. Use `fetch()` to connect frontend with backend.
+6. Use MongoDB `_id` instead of old frontend `id`.
+7. Test API using Postman before connecting frontend.
+8. Commit only working code.
+
+---
+
+## 🚨 Common Errors
+
+| Error | Meaning | Solution |
+|---|---|---|
+| `401 Unauthorized` | Token missing or invalid | Login again and include token |
+| `404 Not Found` | Wrong API endpoint | Check route path |
+| `500 Server Error` | Backend error | Check terminal error |
+| `buffering timed out` | MongoDB not connected | Check MongoDB connection |
+| `Cannot read property value of null` | HTML input ID missing | Check input ID |
+| `Cast to ObjectId failed` | Invalid MongoDB ID | Use valid `_id` |
+
+---
+
+## 🔒 GitHub Rules
+
+Do not push:
+
+```txt
+node_modules/
+.env
+```
+
+Make sure `.gitignore` contains:
+
+```txt
+node_modules
+.env
+```
+
+---
+
+## 🧪 Testing Flow
+
+Recommended testing order:
+
+```txt
+1. Register account
+2. Login account
+3. View profile
+4. Add items
+5. Search items
+6. Add to watchlist
+7. View watchlist
+8. Add review
+9. View reviews
+```
+
+---
+
+## 🚀 Final Goal
+
+The final system should:
+- Use real MongoDB data
+- Use backend API
+- Remove frontend mock data
+- Support login session
+- Allow dynamic watchlist
+- Allow dynamic review and rating
+- Work smoothly through frontend pages
+
+---
