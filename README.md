@@ -19,12 +19,10 @@ The objective of this project is to create a web application that helps users di
 - JavaScript
 
 ### Backend
-- Node.js
-- Express.js
+- Node.js (Express.js)
+
+### Database
 - MongoDB Atlas
-- Mongoose
-- JWT Authentication
-- bcryptjs
 
 ---
 
@@ -56,7 +54,7 @@ ENTERTAINME/
 │   │   ├── itemRoutes.js
 │   │   ├── reviewRoutes.js
 │   │   ├── userRoutes.js
-│   │   └── WatchlistRoutes.js
+│   │   └── watchlistRoutes.js
 │   │
 │   ├── .env
 │   ├── package-lock.json
@@ -142,7 +140,7 @@ ENTERTAINME/
 | `routes/userRoutes.js` | Profile, update profile, change password, delete account routes |
 | `routes/itemRoutes.js` | Entertainment item API routes |
 | `routes/reviewRoutes.js` | Review and rating API routes |
-| `routes/WatchlistRoutes.js` | Watchlist API routes |
+| `routes/watchlistRoutes.js` | Watchlist API routes |
 
 ---
 
@@ -270,7 +268,7 @@ function authHeaders() {
 
 ## 🔐 Authentication API
 
-### Register 
+### Register (routes/authRoutes.js)
 
 ```http
 POST /api/auth/register
@@ -288,7 +286,7 @@ Request body:
 
 ---
 
-### Login
+### Login (routes/authRoutes.js)
 
 ```http
 POST /api/auth/login
@@ -326,7 +324,7 @@ function logout() {
 
 ## 👤 User Profile API
 
-### View Profile
+### View Profile (routes/userRoutes.js)
 
 ```http
 GET /api/users/profile
@@ -340,7 +338,7 @@ Authorization: Bearer token_here
 
 ---
 
-### Update Profile
+### Update Profile (routes/userRoutes.js)
 
 ```http
 PUT /api/users/profile
@@ -357,7 +355,7 @@ Request body:
 
 ---
 
-### Change Password
+### Change Password (routes/userRoutes.js)
 
 ```http
 PUT /api/users/change-password
@@ -374,7 +372,7 @@ Request body:
 
 ---
 
-### Delete Account
+### Delete Account (routes/userRoutes.js)
 
 ```http
 DELETE /api/users/profile
@@ -384,7 +382,7 @@ DELETE /api/users/profile
 
 ## 🎞️ Items API
 
-### Get All Items
+### Get All Items (routes/itemRoutes.js)
 
 ```http
 GET /api/items
@@ -397,7 +395,7 @@ Used by:
 
 ---
 
-### Get Single Item
+### Get Single Item (routes/itemRoutes.js)
 
 ```http
 GET /api/items/:id
@@ -431,7 +429,7 @@ Then filtering can be done in frontend JavaScript using:
 
 ## ⭐ Review API
 
-### Add Review
+### Add Review (routes/reviewRoutes.js)
 
 ```http
 POST /api/reviews
@@ -456,7 +454,7 @@ Request body:
 
 ---
 
-### Get Reviews by Item
+### Get Reviews by Item (routes/reviewRoutes.js)
 
 ```http
 GET /api/reviews/item/:itemId
@@ -464,7 +462,7 @@ GET /api/reviews/item/:itemId
 
 ---
 
-### Get My Reviews
+### Get My Reviews (routes/reviewRoutes.js)
 
 ```http
 GET /api/reviews/my-reviews
@@ -480,7 +478,7 @@ Authorization: Bearer token_here
 
 ## 📌 Watchlist API
 
-### Add to Watchlist
+### Add to Watchlist (routes/watchlistRoutes.js)
 
 ```http
 POST /api/watchlist
@@ -496,7 +494,7 @@ Request body:
 
 ---
 
-### View My Watchlist
+### View My Watchlist (routes/watchlistRoutes.js)
 
 ```http
 GET /api/watchlist
@@ -504,7 +502,7 @@ GET /api/watchlist
 
 ---
 
-### Remove from Watchlist
+### Remove from Watchlist (routes/watchlistRoutes.js)
 
 ```http
 DELETE /api/watchlist/:itemId
