@@ -181,29 +181,45 @@ MongoDB connected
 
 ---
 
-## 🗄️ MongoDB Atlas Setup
+## 🗄️ MongoDB Compass Setup
 
-Team members need to login to MongoDB Atlas to view database data.
+Team members can use MongoDB Compass to access and view the project database locally.
 
 ### Steps
 
-1. Go to MongoDB Atlas:
+1. Download and install MongoDB Compass:
 
 ```txt
-https://cloud.mongodb.com/
+https://www.mongodb.com/products/tools/compass
 ```
 
-2. I will send invitation to each team member for you all to access the database.
+2. Open MongoDB Compass.
 
-3. Open the project cluster.
-
-4. Go to:
+3. Click:
 
 ```txt
-Database → Browse Collections
+Add new connection
 ```
 
-5. Main collections:
+4. Paste this MongoDB connection string:
+
+```txt
+mongodb+srv://aisoh912_db_user:wif2003entertainme@entertainme.4xc3jwv.mongodb.net/entertainmeDB?retryWrites=true&w=majority&appName=entertainme
+```
+
+5. Click:
+
+```txt
+Save & Connect
+```
+
+6. Open database:
+
+```txt
+entertainmeDB
+```
+
+7. Main collections:
 
 ```txt
 users
@@ -215,7 +231,7 @@ watchlists
 ### MongoDB Rules
 
 - Do not delete collections.
-- Do not randomly edit database data.
+- Do not randomly modify database data.
 - Use Postman or frontend API for testing.
 - Ask the leader before changing database structure.
 
